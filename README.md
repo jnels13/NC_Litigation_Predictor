@@ -12,6 +12,7 @@ This README follows the following format:
     <li> Process
     <li> Results
 </ul>
+
 ### Background
 
 #### The Common Law and Appellate Court's Opinions
