@@ -4,9 +4,9 @@
 
 This README follows the following format: 
 <ul>> Repo Contents
-    > Background
-    > Process
-    > Results
+    <li>> Background
+    <li>> Process
+    <li>> Results
 </ul>
 
 ### Repo Contents
