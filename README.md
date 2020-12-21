@@ -3,14 +3,15 @@
 ### Index
 
 This README follows the following format: 
-<ul>> Repo Contents
-    <li>> Background
-    <li>> Process
-    <li>> Results
-</ul>
+
+
 
 ### Repo Contents
-
+<ul>
+    <li> Background
+    <li> Process
+    <li> Results
+</ul>
 ### Background
 
 #### The Common Law and Appellate Court's Opinions
