@@ -16,7 +16,7 @@ This README follows the following format:
     <li> NC_COA_Scraper.ipynb: Jupyter notebook which creates the initial database of appellate opinions
     <li> Litigation_Predictor.ipynb: Jupyter notebook containing the project 
     <li> ProjectData: Folder containing project data files
-    <li> SampleData: Folder containing sample data used through the project
+    <li> SampleData: Folder containing sample data used throughout the project
 </ul>
 
 ### Background
@@ -36,6 +36,16 @@ MSJs are significant because a granted MSJ would typically end a case (though no
 Like most components of legal representation, MSJs can be expensive, from a few thousand dollars in a lower-value case, to hundreds of thousands of dollars as the stakes go up. While attorneys and law firms' collective experience with a given judge or on a given issue can be valuable, a objective number will assist stakeholders perform a cost-benefit analysis. For instance, some insurance companies ask attorneys to provide such a prediction to complete a decision-tree-type analysis, though this prediction is usually based only upon anecdotal reports.  This model provides an objective probability-of-success based upon the corpus of North Carolina's appellate decisions from 1998 to the present. 
 
 ### Process
+
+#### Creating the Data Set
+
+Opinions are stored in individual PDF files at the North Carolina Court of Appeals' web site. Beautiful Soup was used to generate a list of web addresses, which were then gathered via requests USING??? for proxies. PDFs were then imported, converted to strings using the pdfminer library, and built into dataframe for labeling, feature extraction, and further exploration. 
+
+To aid in processing time, the dataframe was initially reduced to only those cases which contain the phrase, "summary judgment." 
+THEN: 
+- Create feature list (appellate judge, trial judge, case type, party type individ/corp, 
+- Create labels
+
 
 Create PDF links list
 Obtain PDFs of every opinion into a DF
