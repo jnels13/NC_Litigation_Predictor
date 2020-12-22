@@ -3,13 +3,21 @@
 ### Index
 
 This README follows the following format: 
-<ul>> Repo Contents
-    > Background
-    > Process
-    > Results
+<ul>
+    <li> Repo Contents
+    <li> Background
+    <li> Process
+    <li> Results
 </ul>
 
 ### Repo Contents
+<ul>
+    <li> README.md: Project description, processes, and outcome
+    <li> NC_COA_Scraper.ipynb: Jupyter notebook which creates the initial database of appellate opinions
+    <li> Litigation_Predictor.ipynb: Jupyter notebook containing the project 
+    <li> ProjectData: Folder containing project data files
+    <li> SampleData: Folder containing sample data used through the project
+</ul>
 
 ### Background
 
