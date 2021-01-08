@@ -1,5 +1,7 @@
 # NC_Litigation_Predictor
 
+The NC_Litigation_Predictor provides a probability of sucess of a motion for summary judgment when considering the features of a given lawsuit. The model applies machine learning built upon all of North Carolina's appelate decisions and provides a prediction grounded in data, not just intuition, so that stakeholders can make an informed cost-benefit analysis on litigation strategy.
+
 ### Index
 
 This README follows the following format: 
@@ -13,12 +15,22 @@ This README follows the following format:
 ### Repo Contents
 <ul>
     <li> README.md: Project description, processes, and outcome
-    <li> NC_COA_Scraper.ipynb: Jupyter notebook which creates the initial database of appellate opinions
-    <li> Litigation_Predictor.ipynb: Jupyter notebook containing the project 
-    <li> ProjectData: Folder containing project data files
-    <li> SampleData: Folder containing sample data used throughout the project
-    <li> Scraped_PDFs: Folder containing scraped PDF opinions, not tracked in Git
-    <li> Initial DataFrames: Versions of the scraped opinions in a DataFrame are not tracked in Git; email me to download a copy
+    <li> Notebooks:
+    <ul>
+        <li> NC_COA_Scraper.ipynb: Jupyter notebook which indexes and downloads the initial set of appellate opinions (NC COA, 1998-2020)
+        <li> DF_Creation.ipynb: Jupyter notebook which the opinions are converted from PDFs to a functional dataframe with minimal preprocessing
+        <li> Litigation_Predictor.ipynb: Jupyter notebook containing the project 
+    </ul>
+    <li> Data:
+    <ul>
+        <li> SampleData: Folder containing sample data used throughout the project
+        <li> pp_msj_df.data: Dataframe of NC Appellate Opinions containing the phrase "summary judgment"     
+    </ul>
+    <li> Materials Not Tracked in Git:
+    <ul>
+        <li> Scraped_PDFs: Collection of scraped PDF opinions from NC COA 1998-2020, NOT tracked in Git
+        <li> Initial DataFrames: Versions of the scraped opinions in a DataFrame are not tracked in Git
+    </ul>
 </ul>
 
 ### Background
@@ -41,17 +53,13 @@ Like most components of legal representation, MSJs can be expensive, from a few 
 
 #### Creating the Data Set
 
-Opinions are stored in individual PDF files at the North Carolina Court of Appeals' web site. Beautiful Soup was used to generate a list of web addresses, which were then gathered via requests USING??? for proxies. PDFs were then imported, converted to strings using the pdfminer library, and built into dataframe for labeling, feature extraction, and further exploration. 
+Opinions are stored in individual PDF files at the North Carolina Court of Appeals' web site. Beautiful Soup was used to generate a list of web addresses, which were then gathered via requests. PDFs were then imported, converted to strings using the PDFMiner library, combined into an initial Pandas DataFrame, and then reduced to only those opinions containing the phrase "summary judgment".  
 
-To aid in processing time, the dataframe was initially reduced to only those cases which contain the phrase, "summary judgment." 
-THEN: 
-- Create feature list (appellate judge, trial judge, case type, party type individ/corp, 
-- Create labels
+THEN:
+- Create labels 
+- Create feature list (appellate judge, trial judge, case type, party type individ/corp,
 
-
-Create PDF links list
-Obtain PDFs of every opinion into a DF
-Create feature set from opinions
+VISUALIZE BREAKDOWN OF CASES
 
 
 ### Results
