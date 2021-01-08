@@ -26,10 +26,10 @@ This README follows the following format:
         <li> SampleData: Folder containing sample data used throughout the project
         <li> pp_msj_df.data: Dataframe of NC Appellate Opinions containing the phrase "summary judgment"     
     </ul>
-    <li> Materials Not Tracked in Git:
+    <li> Materials NOT Tracked in Git/Github:
     <ul>
-        <li> Scraped_PDFs: Collection of scraped PDF opinions from NC COA 1998-2020, NOT tracked in Git
-        <li> Initial DataFrames: Versions of the scraped opinions in a DataFrame are not tracked in Git
+        <li> Scraped_PDFs: Collection of scraped PDF opinions from NC COA 1998-2020 
+        <li> Initial DataFrames: Versions of the scraped opinions in a DataFrame format at various levels of processing
     </ul>
 </ul>
 
