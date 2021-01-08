@@ -17,7 +17,8 @@ This README follows the following format:
     <li> Litigation_Predictor.ipynb: Jupyter notebook containing the project 
     <li> ProjectData: Folder containing project data files
     <li> SampleData: Folder containing sample data used throughout the project
-    <li> Scraped_PDFs: Folder containing scraped PDF opinions (not tracked in Git)
+    <li> Scraped_PDFs: Folder containing scraped PDF opinions, not tracked in Git
+    <li> Initial DataFrames: Versions of the scraped opinions in a DataFrame are not tracked in Git; email me to download a copy
 </ul>
 
 ### Background
