@@ -19,17 +19,13 @@ This README follows the following format:
     <ul>
         <li> NC_COA_Scraper.ipynb: Jupyter notebook which indexes and downloads the initial set of appellate opinions (NC COA, 1998-2020)
         <li> DF_Creation.ipynb: Jupyter notebook which the opinions are converted from PDFs to a functional dataframe with minimal preprocessing
-        <li> Litigation_Predictor.ipynb: Jupyter notebook containing the project 
+        <li> Label and Feature Creation.ipynb: notebook where labels and features are extracted from the appellate opinions
+        <li> Litigation_Predictor.ipynb: Jupyter notebook containing the project model and results
     </ul>
     <li> Data:
     <ul>
         <li> SampleData: Folder containing sample data used throughout the project
-        <li> pp_msj_df.data: Dataframe of NC Appellate Opinions containing the phrase "summary judgment"     
-    </ul>
-    <li> Materials NOT Tracked in Git/Github:
-    <ul>
-        <li> Scraped_PDFs: Collection of scraped PDF opinions from NC COA 1998-2020 
-        <li> Initial DataFrames: Versions of the scraped opinions in a DataFrame format at various levels of processing
+        <li> ProjectData: Folder containing the project data (PDFs) and initial dataframes, NOT tracked in Git  
     </ul>
 </ul>
 
@@ -53,11 +49,11 @@ Like most components of legal representation, MSJs can be expensive, from a few 
 
 #### Creating the Data Set
 
-Opinions are stored in individual PDF files at the North Carolina Court of Appeals' web site. Beautiful Soup was used to generate a list of web addresses, which were then gathered via requests. PDFs were then imported, converted to strings using the PDFMiner library, combined into an initial Pandas DataFrame, and then reduced to only those opinions containing the phrase "summary judgment".  
+Opinions are stored in individual PDF files at the North Carolina Court of Appeals' web site. Beautiful Soup was used to generate a list of web addresses, which were then gathered via requests. PDFs were then imported, converted to strings using the PDFMiner library, combined into an initial Pandas DataFrame, and then reduced to only those opinions containing the phrase "summary judgment". Labels were extracted using regular expressions with decreasing levels of confidence (most opinions ended with a single-word sentence, "affirmed." or "reversed."; others required more detailed extractions
 
-THEN:
-- Create labels 
-- Create feature list (appellate judge, trial judge, case type, party type individ/corp,
+Once the labels were extracted, I was able to create feature columns for appellate author, trial judge, case type, party type (individ/corp). Some of these were simple, while others required more detailed extractions, such as the case type. With case type, I created a set of keywords for broad categories of cases that were less likely to be repeated outside of a certain case type, and THEN RAN A CLASSIFICATION MODEL TO RETURN THE PREDICTED CASE TYPE. 
+
+Once these labels and features were created, initial visualization of the data set could be performed.
 
 VISUALIZE BREAKDOWN OF CASES
 
