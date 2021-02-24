@@ -61,7 +61,7 @@ On other hand, the case-type predictor does show different relative degrees of p
 
 Similarly, the trial judges also have varying degrees of likelihood of being affirmed or reversed. The following illustrates the top ten judges (based upon the number of their cases involving summary judgment motions), ranked by their percentage of cases being affirmed.  (_This is a retrospective review; Judge Spainhour -- who granted one of my summary judgment motions -- passed away in 2020, and Judge Eagles was appointed as a federal district court judge in 2010, while this model only involves state-court cases. The model will be updated with new judges as new opinions come in._)  
 
-<img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/top_ten_judge.png">
+<img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/top_ten_judges.png">
 
 ### Results
 
