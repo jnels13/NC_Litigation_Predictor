@@ -49,6 +49,10 @@ For instance, some insurance companies ask attorneys to provide such a predictio
 
 ### Process
 
+#### Presumptions/Considerations
+
+This model provides a relative probability of success in the trial court, but it is premised upon appellate opinions (NC does not provide access to trial court rulings). There is an obvious gap, and given the typical deference shown by courts of appeals, it should be clear that the model provides a __relative__ probability (as compared to the average judge/county/etc). Moreover, it presumes that every granted MSJ is appealed (very likely overestimates), and that the legal bases for summary judgment (as set forth in N.C.G.S. s. 1A-1, Rule 56) are met (or at least arguable).  
+
 #### Creating the Data Set
 
 Opinions are stored in individual PDF files at the North Carolina Court of Appeals' web site. Beautiful Soup was used to generate a list of web addresses, which were then gathered via requests. PDFs were then imported, converted to strings using the PDFMiner library, combined into an initial Pandas DataFrame, and then reduced to only those opinions containing the phrase "summary judgment". The dataset was further reduced to avoid further complicating factors.  Labels were extracted using regular expressions with decreasing levels of confidence. 
