@@ -39,11 +39,13 @@ Laws are composed of statutes/regulations (prepared by legislative and executive
 
 This project will provide some predictive value, focusing on a single component: a motion for summary judgment. In civil (non-criminal) cases, a motion for summary judgment (or "MSJ") may be brought if both sides essentially agree on the material facts and the movant is entitled to judgment as a matter of law. For instance, in a contract case, if the facts under the opponent's best world simply don't amount to the legal standard for formation of a contract, MSJ may be granted. 
 
-MSJs are significant because a granted MSJ would typically end a case, usually resulting in an appeal (every litigant is entitled to a first-level appeal in NC). Accordingly, the body of North Carolina appellate opinions will address many cases where MSJs have been allowed, providing some insight into the features common to those cases where motions have been affirmed or reversed.
+MSJs are significant because if a court granted an MSJ, that would typically end a case, usually resulting in an appeal (every litigant is entitled to a first-level appeal in NC). Accordingly, the body of North Carolina appellate opinions will address many cases where MSJs have been allowed, providing some insight into the features common to those cases where motions have been affirmed or reversed.
 
 #### A Predictor for a Given Set of Features Will Assist Stakeholders 
 
-Like most components of legal representation, MSJs can be expensive, from a few thousand dollars in a lower-value case, to many multiples of this as the stakes go up. While attorneys' and law firms' collective experience with a given judge or on a given issue can be valuable, a objective number will assist stakeholders perform a cost-benefit analysis. For instance, some insurance companies ask attorneys to provide such a prediction to complete a decision-tree-type analysis, though this prediction is usually based only upon anecdotal reports. Lawyers can advise on whether a case will meet a legal standard, but this model provides an objective probability-of-success probablity based upon the non-legal factors, including the trial judge hearing the motion, the county, the case-type and others, based upon the corpus of North Carolina's appellate decisions from 1998 to the present. 
+Like most components of legal representation, MSJs can be expensive, from a few thousand dollars in a lower-value case, to many multiples of this as the stakes go up. While attorneys' and law firms' collective experience with a given judge or on a given issue can be valuable, a objective assessment will valuably assist stakeholders in performing an accurate cost-benefit analysis. 
+
+For instance, some insurance companies ask attorneys to provide such a prediction to complete a decision-tree-type analysis, though this prediction is usually based only upon anecdotal reports. Lawyers can advise on whether a case will meet a legal standard, but this model provides an objective probability-of-success probablity based upon the non-legal factors, including the trial judge hearing the motion, the county, and the case-type, based upon the corpus of North Carolina's appellate decisions from 1998 to the present. 
 
 ### Process
 
@@ -63,7 +65,13 @@ Similarly, the trial judges also have varying degrees of likelihood of being aff
 
 <img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/top_ten_judges.png">
 
-### Results
+### Modeling + Results
 
-- Probability distribution and illustration
-- Multiple models to compare range of distributions
+I experimented with several different classifiers, starting with logistic regression, and then adding a simple neural network, XG Boost, and random forest models. Ultimately, I also created a stacking classifier, combining all of these models together. The data was imbalanced between the two classes (roughly 3:1), so I ran the data through the models both as unbalanced and balanced using Smote-NC. With the neural network on balanced data, I was able to obtain similar loss curves between training and validation sets (4 layers, 3 with dropouts); however, the curves would not converge with the unbalanced data.  This was a blessing in disguise; when I left the neural network out of the stacking classifier and ran it with the unbalanced data, the stacking classifier (running XG Boost and random forest, with logistic regression as the final estimator) demonstrated the best performance (accuracy of 0.76 and f1 score of 0.86).  
+
+### Upcoming Work
+
+Upcoming work is as follows: <ul>
+    <li> Create functional model in Streamlit
+    <li> Create pipeline to retrain model as new opinions come out (currently current through end of 2020).
+</ul>
