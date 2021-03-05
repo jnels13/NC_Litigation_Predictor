@@ -74,11 +74,11 @@ Similarly, the trial judges also have varying degrees of likelihood of being aff
 I experimented with several different classifiers, starting with logistic regression, and then adding a simple neural network, XG Boost, and random forest models. Ultimately, I also created a stacking classifier, combining all of these models together. The data was imbalanced between the two classes (roughly 3:1), so I ran the data through the models both as unbalanced and balanced using Smote-NC. With the neural network on balanced data, I was able to obtain similar loss curves between training and validation sets (4 layers, 3 with dropouts); however, the curves would not converge with the unbalanced data.  This was a blessing in disguise; when I left the neural network out of the stacking classifier and ran it with the unbalanced data, the stacking classifier (running XG Boost and random forest, with logistic regression as the final estimator) demonstrated the best performance (accuracy of 0.76 and f1 score of 0.86).  
 
 In the final Streamlit app, when a judge, county, and case-type are selected, the model will provide and plot the relative likelihood of a summary judgment motion being affirmed, as illustrated below:
-
-<img align="center" src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/affirmed_dist.png">
+<p  align="center" >
+<img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/affirmed_dist.png">
 
 ```Given the trial judge, county, and case type, your motion has a 23.13% greater/worse chance of being affirmed than the scaled average.```
-
+</p>
 ### Upcoming Work
 
 Upcoming work is as follows: <ul>
