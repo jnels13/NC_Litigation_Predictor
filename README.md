@@ -77,11 +77,13 @@ In the final Streamlit app, when a judge, county, and case-type are selected, th
 <p  align="center" >
 <img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/affirmed_dist.png">
 
-```Given the trial judge, county, and case type, <br>
-your motion has a 23.13% greater/worse chance <br>
+```
+Given the trial judge, county, and case type, 
+your motion has a 23.13% greater/worse chance 
 of being affirmed than the scaled average.
 ```
 </p>
+
 ### Upcoming Work
 
 Upcoming work is as follows: <ul>
