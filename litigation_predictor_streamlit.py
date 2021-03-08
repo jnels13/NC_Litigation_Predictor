@@ -1,45 +1,74 @@
 import pandas as pd 
 import numpy as np 
-from sklearn.ensemble import RandomForestClassifier
-from sklearn import model_selection, svm
+from sklearn.ensemble import StackingClassifier
 
 import pickle 
-from preprocess_tfidf import preprocess_tfidf
-from preprocess_w2v import preprocess_w2v
-from preprocess_gen import preprocess_gen
-from sklearn.preprocessing import LabelEncoder
 import streamlit as st 
 from PIL import Image 
   
+# ===================================================================================================
 # LOAD MODELS AND LISTS 
-# ===================================================================================================
-pickle_in = open('judges.pkl', 'rb') 
-Judges = pickle.load(pickle_in) 
-pickle_in2 = open('counties.pkl', 'rb') 
-Counties = pickle.load(pickle_in2) 
-pickle_in3 = open('case_type.pkl', 'rb')
-Case_Type = pickle.load(pickle_in3)
 
-LOAD MODEL >>>>>>>>>>>>>>>>
-LOAD VIZUALIZATION FN >>>>>>>>>>>>>>>
+pickle_in = open('ProjectData/final_model.data', 'rb') 
+clf = pickle.load(pickle_in) 
+pickle_in2 = open('ProjectData/strmlit_lists.data', 'rb') 
+import_lists = pickle.load(pickle_in2) 
+case_type = import_lists[0]
+judges = import_lists[1]
+counties = import_lists[2]
+scaled_probs_affirmed = import_lists[3]
+unscaled_probs_affirmed = import_lists[4]
+pickle_in3 = open('ProjectData/fit_ohe.data', 'rb')
+ohe = pickle.load(pickle_in3)
 
 # ===================================================================================================
-def welcome(): 
-    return 'welcome all'
+# TO DO - REPLACE THIS FUNCTION WITH A NEW ON
+# def welcome(): 
+#     return 'welcome all'
   
 # defining the function which will make the prediction using  
 # the data which the user inputs 
-def prediction(text):   
-    text2 = preprocess_gen(text)
-    predict_me_tfidf = preprocess_tfidf(text2)
-    predict_me_w2v = preprocess_w2v(text2)
 
-    prediction_tfidf = Encoder.inverse_transform(clf_rf_tfidf.predict(predict_me_tfidf))
-    prediction_w2v = Encoder.inverse_transform(clf_svm_w2v.predict(predict_me_w2v))
+def scaler(list_, element):
+    minx = min(list_)
+    maxx = max(list_)
+    diff = maxx-minx
+    return((element-minx)/diff)
 
-    outcomes = [prediction_tfidf, prediction_w2v]
+def distribution_plot(list_of_probabilities, sample_probability):
+    
+    plt.figure(figsize=(10,8))
+    sns.distplot(list_of_probabilities, color = 'b')
+    avg_prob = round(np.average(list_of_probabilities),4)
+    plt.axvline(avg_prob, color = 'r')
+    plt.axvline(sample_probability, color = 'g')
+    plt.title("Distribution of Probabilities of Summary Judgment Being Affirmed\n", fontsize=18)
+    plt.legend(["Average Probability: "+str(avg_prob), "Sample Prediction of Test Row x: "+str(sample_probability)], 
+               loc='upper left')
+    perc_change = round((sample_proba-avg_prob)/avg_prob*100,3)
+    plt.show()
 
-    return outcomes
+def prediction(df=X2, case_type, judge, county, probs=unscaled_probs_affirmed, scaled_probs=scaled_probs_affirmed):  
+    """
+    Takes one row of a three-column dataframe (type, judge, county) 
+    and returns a probability relative to the average probability
+    that the motion would be affirmed.
+    """
+    df['Case_Type'][0] = case_type
+    df['Trial_Judge'][0] = judge
+    df['County'][0] = county
+
+    transformed_df = ohe.transform(df)
+    pred = round(clf.predict_proba(transformed_df).tolist()[0][1],4)
+    scaled_pred = round(scaler(probs,pred),4)
+
+    distribution_plot(probs, pred)
+
+    avg_success = np.average(scaled_probs_affirmed)
+    difference = round(((scaled_pred-avg_success)/avg_success)*100,2)
+    print("Given the trial judge, county, and case type, your motion has a "+str(difference)+"% greater/worse chance of being affirmed.")
+
+    return ()
 
 
 # ===================================================================================================
@@ -71,7 +100,7 @@ def main():
 # ===================================================================================================
 # REPEAT BELOW LINES FOR EACH OF THE THREE INPUTS, 
     judge = st.selectbox(
-                        'Select the trial judge hearing your motion:',
+                        'Select the trial judge hearing your motion:', <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ...     ('Email', 'Home phone', 'Mobile phone'))
 >>>
 >>> st.write('You selected:', option) 
