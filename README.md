@@ -1,3 +1,5 @@
+<img align="center" src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/NC_Litigation_Banner.JPG" width="auto" height="auto">
+
 # NC_Litigation_Predictor
 
 The NC_Litigation_Predictor is a probabilistic classifier; it provides a probability of sucess of a motion for summary judgment when considering the features of a given lawsuit. The model applies machine learning, built upon all of North Carolina's appelate decisions, and provides a prediction grounded in data on the judge, jurisdiction, and case type, to supplement the legal-threshold criteria, so that stakeholders can make an informed cost-benefit analysis on litigation strategy.
