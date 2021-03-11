@@ -39,7 +39,7 @@ def scaler(list_, element):
 
 def distribution_plot(list_of_probabilities, sample_probability):
     
-    plt.figure(figsize=(8,6))
+    plt.figure(figsize=(6,4))
     sns.set_style("whitegrid")
     sns.distplot(list_of_probabilities, color = 'b', hist=False)
     avg_prob = round(np.average(list_of_probabilities),4)
@@ -70,22 +70,21 @@ def prediction(case_type, judge, county):
 # MAIN FUNCTION DEFINES WEB PAGE
 
 def main(): 
-    # giving the webpage a title 
-    # st.title("NC Litigation Predictor") 
+    st.title("NC Litigation Predictor") 
       
-    # here we define some of the front end elements of the web page like  
-    # the font and background color, the padding and the text to be displayed 
     html_temp = """ 
     <div style ="background-color: #ABBAEA;padding:13px"> 
     <h1 style ="color:black;text-align:center;">North Carolina Litigation Predictor</h1> 
-    <p> This app provides a prediction of the relative probability of success TESTETESTEST, 
-    github.com/jnels13. 
-    <p> The input essay should be typed or pasted into the text box below.
+    <p> This app provides a prediction of the relative probability of success of a summary judgment motion, 
+    assuming that the legal standard is met.  Upon selecting the judge, jurisdiction, and case type of your
+    motion, the model will illustrate your relative likelihood of success.  You may re-run the model while 
+    tweaking the various factors to see which will most affect your probability of success.  The model is 
+    comprised of multiple machine-learning models, and is built upon 23 years of North Carolina's appellate
+    decisions, going back to 1998.   
+    <p>Code may be viewed on github.com/jnels13.
     </div> 
     """
       
-    # this line allows us to display the front end aspects we have  
-    # defined in the above code 
     st.markdown(html_temp, unsafe_allow_html = True) 
       
 
@@ -97,19 +96,18 @@ def main():
     casetype = st.selectbox('Select the case type:',case_type)
 
     st.write('You selected: judge: '+str(judge)+', county: '+str(county)+', and case type: '+str(casetype))
-
- #   result ="" 
-      
-    # the below line ensures that when the button called 'Predict' is clicked,  
-    # the prediction function defined above is called to make the prediction  
-    # and store it in the variable result 
+   
     if st.button("Predict"): 
         result = prediction(casetype, judge, county)
         scaled_pred = round(scaler(unscaled_probs_affirmed,result),4)
         distribution_plot(unscaled_probs_affirmed, result)
         avg_success = np.average(scaled_probs_affirmed)
         difference = round(((scaled_pred - avg_success)/avg_success)*100,2)
-        st.success("Given the trial judge, county, and case type, your motion has a "+str(difference)+"% greater/worse chance of being affirmed than the average.")
+        st.success("""The blue curve above represents the probabilities of success of all of the AFFIRMED cases,
+        and the red line is the mean probability of a successful motion (presuming the legal standard
+        is met).  Given the trial judge, county, and case type selected, your probability of being affirmed
+        (indicated by the green line), assuming the legal standard is met, is {}% greater/worse chance of 
+        than the average.""".format(difference))
 
 
 if __name__=='__main__': 
