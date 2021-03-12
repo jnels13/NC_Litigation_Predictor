@@ -1,6 +1,6 @@
 <img align="center" src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/NC_Litigation_Banner.JPG" width="auto" height="auto">
 
-The NC_Litigation_Predictor is a probabilistic classifier; it provides a probability of success of a motion for summary judgment when considering the features of a given lawsuit. The model applies machine learning, built upon all of North Carolina's appellate decisions, and provides a prediction grounded in data, based upon the user's judge, jurisdiction, and case type, to supplement the legal-threshold criteria, so that stakeholders can make an informed cost-benefit analysis on litigation strategy. The final model may be run <a href="https://share.streamlit.io/jnels13/nc_litigation_predictor/main/litigation_predictor_streamlit.py">HERE.</a>
+The NC_Litigation_Predictor is a probabilistic classifier; it provides a relative probability of success of a motion for summary judgment when considering the features of a given lawsuit. The model applies machine learning, built upon 23 years of North Carolina's appellate decisions, and provides a prediction grounded in data, based upon the user's judge, jurisdiction, and case type, to supplement the legal-threshold criteria, so that stakeholders can make an informed cost-benefit analysis on litigation strategy. The final model may be run <a href="https://share.streamlit.io/jnels13/nc_litigation_predictor/main/litigation_predictor_streamlit.py">HERE.</a>
 
 This README follows the following format: 
 <ul>
@@ -23,8 +23,12 @@ This README follows the following format:
     <li> Data:
     <ul>
         <li> SampleData: Folder containing sample data used throughout the project
+        <li> Streamlit_files: Data files for Streamlit deployment
         <li> ProjectData: Folder containing the project data (PDFs) and initial dataframes, NOT tracked in Git  
     </ul>
+        Images (folder): Visualizations and example images
+        litigation_predictor_streamlit.py: Streamlit deployment files
+        requirements.txt: dependencies file required for Streamlit
 </ul>
 
 ### Background
@@ -74,7 +78,7 @@ In the final Streamlit app, when a judge, county, and case-type are selected, th
 <img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/Streamlit_Selection.jpg?raw=true" width=400>
 <img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/Streamlit_Predict.jpg?raw=true" width=400>
 </p>
-The probability of all cases to be affirmed is rather high -- generally in the 70%'s -- though the model is more intended to demonstrate where a given case lies in relation to the mean likelihood of being affirmed.
+The probability of all cases to be affirmed is rather high -- generally in the 70%'s -- which can be misleading. Accordingly, I stress the intent of the model as demonstrating where a given case lies in relation to the mean likelihood of being affirmed.
 
 ### Upcoming Work
 
