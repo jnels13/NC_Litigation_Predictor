@@ -71,8 +71,8 @@ Experiments were run with several different classifiers, starting with logistic 
 
 In the final Streamlit app, when a judge, county, and case-type are selected, the model will provide and plot the relative likelihood of a summary judgment motion being affirmed, as illustrated below:
 <p  align="center" >
-<img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/Streamlit_Selection.jpg?raw=true">
-<img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/Streamlit_Predict.jpg?raw=true">
+<img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/Streamlit_Selection.jpg?raw=true" width=400>
+<img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/Streamlit_Predict.jpg?raw=true" width=400>
 </p>
 
 ### Upcoming Work
