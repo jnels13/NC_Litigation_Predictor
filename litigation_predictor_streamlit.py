@@ -5,17 +5,20 @@ import seaborn as sns
 from sklearn.ensemble import StackingClassifier
 
 import pickle 
+import cloudpickle as cp
+from urllib.request import urlopen
 import streamlit as st 
 from PIL import Image 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # LOAD MODELS AND LISTS 
+clf_link = 'https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/final_model.data?raw=true'
+f1 = urlopen(clf_link)
+clf = pickle.load(f1) 
 
-pickle_in = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/final_model.data?raw=true', 'rb') 
-clf = pickle.load(pickle_in) 
-
-pickle_in2 = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/strmlit_lists.data?raw=true', 'rb') 
-import_lists = pickle.load(pickle_in2)
+lists_link = 'https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/strmlit_lists.data?raw=true'
+f2 = urlopen(lists_link)
+import_lists = pickle.load(f2)
 
 case_type = import_lists[0]
 judges = import_lists[1]
@@ -23,11 +26,13 @@ counties = import_lists[2]
 scaled_probs_affirmed = import_lists[3]
 unscaled_probs_affirmed = import_lists[4]
 
-pickle_in3 = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/fit_ohe.data?raw=true', 'rb')
-ohe = pickle.load(pickle_in3)
+ohe_link = 'https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/fit_ohe.data?raw=true'
+f3 = urlopen(ohe_link)
+ohe = pickle.load(f3)
 
-pickle_in4 = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/sample_df.data?raw=true', 'rb')
-X2 = pickle.load(pickle_in4) 
+X2_link = 'https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/sample_df.data?raw=true'
+f4 = urlopen(X2_link)
+X2 = pickle.load(f4) 
 
 # FUNCTIONS
 
@@ -70,17 +75,23 @@ def prediction(case_type, judge, county):
 # MAIN FUNCTION DEFINES WEB PAGE
 
 def main(): 
-    st.title("NC Litigation Predictor") 
+    #st.title("NC Litigation Predictor") 
       
     html_temp = """ 
     <div style ="background-color: #ABBAEA;padding:13px"> 
     <h1 style ="color:black;text-align:center;">North Carolina Litigation Predictor</h1> 
-    <p> This app provides a prediction of the relative probability of success of a summary judgment motion, 
-    assuming that the legal standard is met.  Upon selecting the judge, jurisdiction, and case type of your
-    motion, the model will illustrate your relative likelihood of success.  You may re-run the model while 
-    tweaking the various factors to see which will most affect your probability of success.  The model is 
-    comprised of multiple machine-learning models, and is built upon 23 years of North Carolina's appellate
-    decisions, going back to 1998.   
+    <p> This app provides a prediction of the <b>relative</b> probability of success of a 
+    summary judgment motion, assuming that the legal standard is met. The probabilities are generally
+    high (in the 70s) because the majority of summary judgment motions across the board are
+    affirmed. Accordingly, the meaningful metric provided by this model indicates your 
+    <b>relative</b> likelihood of being affirmed upon selecting the judge, 
+    jurisdiction, and case type of your motion vs the average.  
+    <p> The probabiliy chart allows you to visualize the distance between the 
+    red line (average) and green line (your selections) and by provides a "%-greater- or 
+    %-less-than-average" metric. You may re-run the model while tweaking the various factors 
+    to see which will most affect your probability of success. The model is built upon 
+    multiple machine-learning models, and was trained upon 23 years of North Carolina's 
+    appellate decisions, going back to 1998.   
     <p>Code may be viewed on github.com/jnels13.
     </div> 
     """
@@ -103,11 +114,11 @@ def main():
         distribution_plot(unscaled_probs_affirmed, result)
         avg_success = np.average(scaled_probs_affirmed)
         difference = round(((scaled_pred - avg_success)/avg_success)*100,2)
-        st.success("""The blue curve above represents the probabilities of success of all of the AFFIRMED cases,
-        and the red line is the mean probability of a successful motion (presuming the legal standard
-        is met).  Given the trial judge, county, and case type selected, your probability of being affirmed
-        (indicated by the green line), assuming the legal standard is met, is {}% greater/worse chance of 
-        than the average.""".format(difference))
+        st.success("""The blue curve above represents the distribution of the probabilities of success;
+        the red line is the average probability of a successful motion being affirmed (presuming the legal 
+        standard is met).  Given the trial judge, county, and case type selected, your probability of being 
+        affirmed (indicated by the green line), assuming the legal standard is met, is {}% greater/worse 
+        chance of than the average.""".format(difference))
 
 
 if __name__=='__main__': 
