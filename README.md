@@ -1,6 +1,6 @@
 <img align="center" src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/NC_Litigation_Banner.JPG" width="auto" height="auto">
 
-The NC_Litigation_Predictor is a probabilistic classifier; it provides a probability of success of a motion for summary judgment when considering the features of a given lawsuit. The model applies machine learning, built upon all of North Carolina's appellate decisions, and provides a prediction grounded in data, based upon the user's judge, jurisdiction, and case type, to supplement the legal-threshold criteria, so that stakeholders can make an informed cost-benefit analysis on litigation strategy. The final model may be run <a href="https://share.streamlit.io/jnels13/nc_litigation_predictor/main/litigation_predictor_streamlit.py">HERE.</a>
+The NC_Litigation_Predictor is a probabilistic classifier; it provides a probability of success of a motion for summary judgment when considering the features of a given lawsuit. The model applies machine learning, built upon all of North Carolina's appellate decisions, and provides a prediction grounded in data, based upon the user's judge, jurisdiction, and case type, to supplement the legal-threshold criteria, so that stakeholders can make an informed cost-benefit analysis on litigation strategy. The final model may be run <a href="https://share.streamlit.io/jnels13/nc_litigation_predictor/main/litigation_predictor_streamlit.py" target="_blank">HERE.</a>
 
 This README follows the following format: 
 <ul>
@@ -74,6 +74,7 @@ In the final Streamlit app, when a judge, county, and case-type are selected, th
 <img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/Streamlit_Selection.jpg?raw=true" width=400>
 <img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/Streamlit_Predict.jpg?raw=true" width=400>
 </p>
+The probability of all cases to be affirmed is rather high -- generally in the 70%'s -- though the model is more intended to demonstrate where a given case lies in relation to the mean likelihood of being affirmed.
 
 ### Upcoming Work
 
