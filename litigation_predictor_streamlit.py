@@ -11,10 +11,10 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # LOAD MODELS AND LISTS 
 
-pickle_in = open(https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/final_model.data, 'rb') 
+pickle_in = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/final_model.data?raw=true', 'rb') 
 clf = pickle.load(pickle_in) 
 
-pickle_in2 = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/strmlit_lists.data', 'rb') 
+pickle_in2 = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/strmlit_lists.data?raw=true', 'rb') 
 import_lists = pickle.load(pickle_in2)
 
 case_type = import_lists[0]
@@ -23,10 +23,10 @@ counties = import_lists[2]
 scaled_probs_affirmed = import_lists[3]
 unscaled_probs_affirmed = import_lists[4]
 
-pickle_in3 = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/fit_ohe.data', 'rb')
+pickle_in3 = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/fit_ohe.data?raw=true', 'rb')
 ohe = pickle.load(pickle_in3)
 
-pickle_in4 = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/sample_df.data', 'rb')
+pickle_in4 = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/sample_df.data?raw=true', 'rb')
 X2 = pickle.load(pickle_in4) 
 
 # FUNCTIONS
