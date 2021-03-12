@@ -11,7 +11,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # LOAD MODELS AND LISTS 
 
-pickle_in = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/final_model.data', 'rb') 
+pickle_in = open(https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/final_model.data, 'rb') 
 clf = pickle.load(pickle_in) 
 
 pickle_in2 = open('https://github.com/jnels13/NC_Litigation_Predictor/blob/main/Streamlit_files/strmlit_lists.data', 'rb') 
