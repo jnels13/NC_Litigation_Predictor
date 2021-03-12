@@ -5,7 +5,6 @@ import seaborn as sns
 from sklearn.ensemble import StackingClassifier
 
 import pickle 
-import cloudpickle as cp
 from urllib.request import urlopen
 import streamlit as st 
 from PIL import Image 
