@@ -26,9 +26,9 @@ This README follows the following format:
         <li> Streamlit_files: Data files for Streamlit deployment
         <li> ProjectData: Folder containing the project data (PDFs) and initial dataframes, NOT tracked in Git  
     </ul>
-        Images (folder): Visualizations and example images
-        litigation_predictor_streamlit.py: Streamlit deployment files
-        requirements.txt: dependencies file required for Streamlit
+    <li> Images (folder): Visualizations and example images
+    <li> litigation_predictor_streamlit.py: Streamlit deployment files
+    <li> requirements.txt: dependencies file required for Streamlit
 </ul>
 
 ### Background
