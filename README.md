@@ -122,7 +122,7 @@ In the <a href="https://share.streamlit.io/jnels13/nc_litigation_predictor/main/
 <img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/Streamlit_Selection.jpg?raw=true" width=400>
 <img src="https://github.com/jnels13/NC_Litigation_Predictor/blob/main/images/Streamlit_Predict.jpg?raw=true" width=400>
 </p>
-The probability of all cases to be affirmed is rather high -- generally in the 70%'s -- which can be misleading. Accordingly, I stress the intent of the model as demonstrating where a given case lies *in relation to* the mean likelihood of being affirmed.
+The probability of all cases to be affirmed is rather high -- generally in the 70%'s -- which can be misleading. Accordingly, I stress the intent of the model as demonstrating where a given case lies **in relation to** the mean likelihood of being affirmed.
 
 ### Upcoming Work
 
