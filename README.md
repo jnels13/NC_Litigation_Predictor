@@ -97,6 +97,8 @@ Similarly, the trial judges also have varying degrees of likelihood of being aff
 
 ### __Model__: Creating and Revising Predictive Models 
 
+```Notebook: Litigation_Predictor.ipynb``` was used for the remaining work in this project. 
+
 #### One-hot encoding and class balancing
 
 I started the modeling process first by one hot encoding the categorical variables (which was all of the variables).  This resulted in a matrix of 2665 rows and 605 columns.  Class imbalance presented some issue, with the affirmed cases representing 74.4% of the corpus.  To account for this, I ran the models both on the unbalanced data set and on a balanced set using Smote-NC, a class-balancing algorithm better suited to categorical data than the original Smote algorithm. Ultimately, the models performed better using the unbalanced data, and the imbalance was not too significant; accordingly, the numbers below represent the runs on imbalanced data.
