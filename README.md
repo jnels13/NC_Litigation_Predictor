@@ -12,7 +12,7 @@ This README follows the following format:
 
 ### Repo Contents
 <ul>
-    <li> README.md: Background, Process, and Outcome
+    <li> README.md: Background, Process (and abstract), and Outcome
     <li> Notebooks:
     <ul>
         <li> NC_COA_Scraper.ipynb: Jupyter notebook which indexes and downloads the initial set of appellate opinions (NC COA, 1998-2020)
@@ -48,6 +48,12 @@ MSJs are significant because if a court granted an MSJ, that would typically end
 Like most components of legal representation, MSJs can be expensive, costing from a few thousand dollars in a lower-value case, to many multiples of this as the stakes go up. While attorneys' and law firms' judgment on meeting the legal standard is crucial and fact-dependent, their collective experience with a given judge or on a given issue can also be valuable; however, an objective prediction based upon thousands of cases will valuably assist stakeholders in performing an informed and accurate cost-benefit analysis. 
 
 ## Process (OSEMN)
+
+#### Abstract
+
+This project was created to assist in the cost-benefit analysis of an MSJ, to supplement anecdote with regard to the judge hearing the motion. To provide this insight, I first gathered the data by scraping all available appellate opinions (23 years' worth) and converting them into a Pandas DataFrame. After dropping cases that do not reference MSJs, I cleaned things like page numbers and PDF tags, and removed opinions that would confuse the model (i.e., dissents and 'substantial right' decisions). Finally, I extracted labels and features using primarily regular expressions functions. To extract the case type, I prepared a function using keywords for each case type.  All functions were varified extensively by hand. 
+
+For the modeling, I first considered balancing the data, which was approximately 3:1 between the affirmed and reversed cases, and ultimately ran the models on both sets of data. I experimented across several different models, including logistic regression, random forest, and XG Boost. I had also implemented a simple neural network, with varying degrees of success. Ultimately, I implemented a stacking classifier incorporating all of these models, though the neural network was ultimatley dropped when the stacking classifier worked better without it. The final f-1 score was 0.86 with an accuracy of 0.76. I then deployed the final model to Streamlit, which may be accessed <a href="https://share.streamlit.io/jnels13/nc_litigation_predictor/main/litigation_predictor_streamlit.py">HERE.</a>  Future work includes creating a pipeline for future opinions (the model is current through the end of 2021).  
 
 ### __Obtain__: Understanding | Gathering Information | Sourcing Data
 
