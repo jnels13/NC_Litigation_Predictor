@@ -117,7 +117,8 @@ def main():
         the red line is the average probability of a successful motion being affirmed (presuming the legal 
         standard is met).  Given the trial judge, county, and case type selected, your probability of being 
         affirmed (indicated by the green line), assuming the legal standard is met, is {}% greater (if positive)
-        /worse (if negative) chance of than the average.""".format(difference))
+        /worse (if negative) chance of than the average. \n\n The further the green line is from the red line, 
+        the more significant the effect of the judge/jurisdiction/case type on outcome.""".format(difference))
 
 
 if __name__=='__main__': 
