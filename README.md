@@ -121,7 +121,7 @@ I then combined these into a stacking classifier, using logistic regression as t
 
 However, when returning to the unbalanced data, despite many attempts at tuning the model, the loss curves would diverge significantly after only a few epochs.  I eventually tried running the stacking classifier without the neural network, and results improved from when it was included, with a final accuracy of 0.76 and an f-1 score of 0.86. 
 
-### __iNterpret__: What Does the Model Show? 
+### __Interpret__: What Does the Model Show? 
 
 In the <a href="https://share.streamlit.io/jnels13/nc_litigation_predictor/main/litigation_predictor_streamlit.py">final Streamlit app</a>, when a judge, county, and case-type are selected, the model will provide and plot the relative likelihood of a summary judgment motion being affirmed , as illustrated below:  
 <p  align="center" >
