@@ -85,8 +85,8 @@ def main():
     affirmed. Accordingly, the meaningful metric provided by this model indicates your 
     <b>relative</b> likelihood of being affirmed upon selecting the judge, 
     jurisdiction, and case type of your motion vs the average.  
-    <p> The probabiliy chart allows you to visualize the distance between the 
-    red line (average) and green line (your selections) and by provides a "%-greater- or 
+    <p> The probability chart allows you to visualize the distance between the 
+    red line (average) and green line (your selections) and provides a "%-greater- or 
     %-less-than-average" metric. You may re-run the model while tweaking the various factors 
     to see which will most affect your probability of success. The model is built upon 
     multiple machine-learning models, and was trained upon 23 years of North Carolina's 
