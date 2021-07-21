@@ -42,10 +42,11 @@ def scaler(list_, element):
     return((element-minx)/diff)
 
 def distribution_plot(list_of_probabilities, sample_probability):
+    
     plt.figure(figsize=(6,4))
     sns.set_style("whitegrid")
-    bottom_range = int(0.45 * len(list_of_probabilities)
-    sns.distplot(list_of_probabilities[bottom_range:], color = 'b', hist=False)
+    sns.distplot(list_of_probabilities, color = 'b', hist=False)
+
     avg_prob = round(np.average(list_of_probabilities),4)
     plt.axvline(avg_prob, color = 'r')
     plt.axvline(sample_probability, color = 'g')
