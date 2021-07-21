@@ -46,7 +46,7 @@ def distribution_plot(list_of_probabilities, sample_probability):
     plt.figure(figsize=(6,4))
     sns.set_style("whitegrid")
     lower_limit = int(0.7 * len(list_of_probabilities))
-    sns.distplot(list_of_probabilities[lower_limit:], color = 'b', hist=False)
+    sns.distplot(list_of_probabilities[0.73:], color = 'b', hist=False)
 
     avg_prob = round(np.average(list_of_probabilities),4)
     plt.axvline(avg_prob, color = 'r')
