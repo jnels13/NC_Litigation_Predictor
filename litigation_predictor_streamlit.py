@@ -43,7 +43,7 @@ def scaler(list_, element):
 
 def distribution_plot(list_of_probabilities, sample_probability):
     
-    plt.figure(figsize=(6,4))
+    plt.figure(figsize=(8,6))
     sns.set_style("whitegrid")
     lower_limit = int(0.45 * len(list_of_probabilities))
     sns.distplot(list_of_probabilities[lower_limit:], color = 'b', hist=False, kde_kws={'clip': (0.45, 1.0)})
@@ -119,11 +119,11 @@ def main():
             greater = 'greater' 
         else: 
             greater = 'worse'
-        st.success("""The blue curve above represents the distribution of the probabilities of success;
-        the red line is the average probability of a successful motion being affirmed (presuming the legal 
-        standard is met).  Given the trial judge, county, and case type selected, your probability of being 
+        st.success("""Given the trial judge, county, and case type selected, your probability of being 
         affirmed (indicated by the green line), assuming the legal standard is met, is {}% {} 
-        chance of than the average. \n\n The further the green line is from the red line, 
+        chance of than the average. \n\n The blue curve above represents the distribution of the probabilities of success;
+        the red line is the average probability of a successful motion being affirmed (presuming the legal 
+        standard is met).   \n\n The further the green line is from the red line, 
         the more significant the effect of the judge/jurisdiction/case type on outcome.""".format(abs(difference), greater))
 
 
