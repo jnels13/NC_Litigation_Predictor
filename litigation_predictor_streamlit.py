@@ -124,7 +124,7 @@ def main():
         standard is met).  Given the trial judge, county, and case type selected, your probability of being 
         affirmed (indicated by the green line), assuming the legal standard is met, is {}% {} 
         chance of than the average. \n\n The further the green line is from the red line, 
-        the more significant the effect of the judge/jurisdiction/case type on outcome.""".format(abs(difference), greater)
+        the more significant the effect of the judge/jurisdiction/case type on outcome.""".format(abs(difference), greater))
 
 
 if __name__=='__main__': 
