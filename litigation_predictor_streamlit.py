@@ -46,8 +46,8 @@ def distribution_plot(list_of_probabilities, sample_probability):
     plt.figure(figsize=(6,4))
     sns.set_style("whitegrid")
     lower_limit = int(0.45 * len(list_of_probabilities))
-    sns.distplot(list_of_probabilities[lower_limit:], color = 'b', hist=False)
-
+    sns.distplot(list_of_probabilities[lower_limit:], color = 'b', hist=False, kde_kws={'clip': (0.45, 1.0)})
+    plt.xticks([])
     avg_prob = round(np.average(list_of_probabilities),4)
     plt.axvline(avg_prob, color = 'r')
     plt.axvline(sample_probability, color = 'g')
@@ -112,15 +112,19 @@ def main():
     if st.button("Predict"): 
         result = prediction(casetype, judge, county)
         scaled_pred = round(scaler(unscaled_probs_affirmed,result),4)
-        distribution_plot(unscaled_probs_affirmed, result)
+        distribution_plot(scaled_probs_affirmed, scaled_pred) #unscaled_probs_affirmed, result)
         avg_success = np.average(scaled_probs_affirmed)
         difference = round(((scaled_pred - avg_success)/avg_success)*100,2)
+        if difference > 0: 
+            greater = 'greater' 
+        else: 
+            greater = 'worse'
         st.success("""The blue curve above represents the distribution of the probabilities of success;
         the red line is the average probability of a successful motion being affirmed (presuming the legal 
         standard is met).  Given the trial judge, county, and case type selected, your probability of being 
-        affirmed (indicated by the green line), assuming the legal standard is met, is {}% greater (if positive)
-        /worse (if negative) chance of than the average. \n\n The further the green line is from the red line, 
-        the more significant the effect of the judge/jurisdiction/case type on outcome.""".format(difference))
+        affirmed (indicated by the green line), assuming the legal standard is met, is {}% {} 
+        chance of than the average. \n\n The further the green line is from the red line, 
+        the more significant the effect of the judge/jurisdiction/case type on outcome.""".format(abs(difference), greater)
 
 
 if __name__=='__main__': 
