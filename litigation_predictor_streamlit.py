@@ -121,7 +121,7 @@ def main():
             greater = 'worse'
         st.success("""Given the trial judge, county, and case type selected, your probability 
         of being affirmed (indicated by the green line), assuming the legal standard is met, 
-        is {}% {} chance of success than the average. \n\n The blue curve above represents the 
+        is {}% {} than the average. \n\n The blue curve above represents the 
         distribution of the probabilities of success; the red line is the average probability 
         of a successful motion being affirmed (presuming the legal standard is met).""".format(abs(difference), greater))
 
