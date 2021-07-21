@@ -51,7 +51,7 @@ def distribution_plot(list_of_probabilities, sample_probability):
     avg_prob = round(np.average(list_of_probabilities),4)
     plt.axvline(avg_prob, color = 'r')
     plt.axvline(sample_probability, color = 'g')
-    plt.title("Distribution of Probabilities of Summary Judgment Being Affirmed\n", fontsize=18)
+    plt.title("Probabilities of Summary Judgment Being Affirmed\n", fontsize=18)
     plt.legend(["Average Probability: "+str(avg_prob), "Probability for Selected Case: "+str(sample_probability)], 
                loc='upper left')
     perc_change = round((sample_probability-avg_prob)/avg_prob*100,3)
